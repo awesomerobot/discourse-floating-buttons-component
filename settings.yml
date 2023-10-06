@@ -1,0 +1,12 @@
+mobile_only:
+  default: false
+
+display_mode:
+  default: "dismiss and new topic"
+  type: enum
+  choices:
+    - "dismiss only"
+    - "new topic only"
+
+round_buttons_mobile:
+  default: true

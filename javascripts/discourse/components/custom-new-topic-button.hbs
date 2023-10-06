@@ -1,0 +1,12 @@
+<DButton
+  @class="btn-primary"
+  @id="custom-create-topic"
+  @action={{action "customCreateTopic"}}
+  @icon="plus"
+  @disabled={{this.attrs.createTopicDisabled}}
+  @label={{if this.hasDraft "topic.open_draft" "topic.create"}}
+>
+  {{#if this.attrs.createTopicDisabled}}
+    <DTooltip>{{i18n "topic.create_disabled_category"}}</DTooltip>
+  {{/if}}
+</DButton>

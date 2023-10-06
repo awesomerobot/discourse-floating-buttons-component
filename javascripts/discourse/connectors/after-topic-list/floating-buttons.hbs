@@ -1,0 +1,38 @@
+{{bodyClass
+  (if
+    (or this.args.showResetNew this.args.showDismissRead)
+    "floating-buttons-with-dismiss"
+  )
+}}
+
+{{#if
+  (or
+    (and this.site.mobileView (theme-setting "mobile_only"))
+    (not (theme-setting "mobile_only"))
+  )
+}}
+  <div
+    class="floating-buttons
+      {{if
+        (or this.args.showResetNew this.args.showDismissRead)
+        '--with-dismiss'
+      }}"
+  >
+    {{#unless (eq (theme-setting "display_mode") "new topic only")}}
+      <TopicDismissButtons
+        @position="floating"
+        @selectedTopics={{this.args.selected}}
+        @model={{this.args.data}}
+        @showResetNew={{this.args.showResetNew}}
+        @showDismissRead={{this.args.showDismissRead}}
+        @resetNew={{this.args.resetNew}}
+      />
+    {{/unless}}
+    {{#unless (eq (theme-setting "display_mode") "dismiss only")}}
+      <CustomNewTopicButton
+        @category={{this.args.category}}
+        @tag={{this.args.tag}}
+      />
+    {{/unless}}
+  </div>
+{{/if}}
